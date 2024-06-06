@@ -35,7 +35,8 @@ class Movie(BaseModel):
             }
         }
 
-@movie_router.get("/movies", tags=["movies"], response_model = List[Movie],status_code=200, dependencies=[Depends(JWTBearer())])
+# @movie_router.get("/movies", tags=["movies"], response_model = List[Movie],status_code=200, dependencies=[Depends(JWTBearer())])
+@movie_router.get("/movies", tags=["movies"], response_model = List[Movie],status_code=200)
 def get_movies() -> List[Movie]:
   db = Session()
   result = db.query(MovieModel).all()
